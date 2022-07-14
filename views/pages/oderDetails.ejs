@@ -1,0 +1,65 @@
+<div class="order_details_table row justify-content-center bg-white">
+   
+    <div class="table-responsive" style="width: 80%;">
+        <h2 class="text-center">Chi tiết đơn hàng</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Hình ảnh </th>
+            <th scope="col">Tên sản phẩm</th>
+            <th scope="col">Số lượng đã mua</th>
+            <th scope="col">Giá sản phẩm </th>
+          </tr>
+        </thead>
+        <tbody>
+            <% oder.products.forEach((product,index)=> { %>
+          <tr>
+            <td><img style="width: 50px; height: 50px;" src="<%= product.image %> " alt=""></td>
+            <td>
+              <p><%= product.nameFuitl %> </p>
+            </td>
+            <td>
+              <h5> X 0<%= product.count %> </h5>
+            </td>
+            <td>
+              <p><%= product.price %> </p>
+            </td>
+          </tr>
+        <%  })%> 
+          <tr>
+            <td>
+              <h4>Tổng tiền sản phẩm</h4>
+            </td>
+            <td>
+              <h5></h5>
+            </td>
+            <td>
+              <p><%= oder.totalPrice %> </p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Shipping</h4>
+            </td>
+            <td>
+              <h5></h5>
+            </td>
+            <td>
+              <p>0</p>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h4>Tổng tiền đơn hàng</h4>
+            </td>
+            <td>
+              <h5></h5>
+            </td>
+            <td>
+              <h4><%= oder.totalPrice %> </h4>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

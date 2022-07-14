@@ -1,0 +1,48 @@
+<!-- Resgiter -->
+<div class="signup-area page-padding">
+    <div class="container">
+        <div class="row">
+            <div class=" col-md-12 col-sm-12 col-xs-12">
+                <div class="login-page signup-page">
+                    <div class="login-form signup-form">
+                        <h4 class="login-title ">REGISTER</h4>
+                        <%- include ('./partial/messages.ejs') %>
+                        <div class="row justify-content-center">
+                            <form id="contactForm" method="POST" action="/createUser" class="log-form">
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" id="name" class="form-control" placeholder="Username" required data-error="Please enter your name" name="name" value="">
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input type="email" id="email" class="form-control" placeholder="Your Email" required data-error="Please enter your name" name="email" value="">
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input type="text" id="phone" class="form-control" placeholder="Your Phone" required data-error="Please enter your name" name="phone" value="">
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input type="password" id="msg_subject" class="form-control" placeholder="Password" required data-error="Please enter your message subject" name="password" value="">
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <input type="password" id="msg_subject2" class="form-control" placeholder="Password Comfirm" required data-error="Please enter your message subject2" name="password2" value="">
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12 ">
+                                    <div class="check-group flexbox">
+                                        <label class="check-box">
+                                            <input type="checkbox" class="check-box-input" checked>
+                                            <span class="remember-text">I agree terms & conditions</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-sm-12 col-xs-12">
+                                    <button type="submit" id="submit" class="login-btn">Sign up</button>
+                                    <div id="msgSubmit" class="h3 hidden"></div> 
+                                    <div class="clearfix"></div>
+                                </div>
+                            </form> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+     </div>
+</div>
+<!-- Resgiter -->

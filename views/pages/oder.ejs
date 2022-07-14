@@ -1,0 +1,32 @@
+<div class="row justify-content-center">
+	<div class="card" style="width: 77%;">
+	  <div class="card-body pb-0 text-center" style="background-color: #7fad39;">
+		<h4 class="card-title  text-white">Sản phẩm đã thanh toán</h4>
+	  </div>
+	  <div class="card-body p-0">
+		<div class="table-responsive">
+		  <table class="table custom-table text-dark">
+        <thead>
+          <tr style="background-color: #e4e9f0;">
+          <th>STT</th>
+          <th>Mã đơn hàng</th>
+          <th>Ngày đã thanh toán</th>
+          <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% oders.forEach((oder,index)=> { %>
+          <tr>
+            <td><%= index + 1 %> </td>
+            <td><%= oder._id + 1 %> </td>
+            <td><%= oder.createdAt + 1 %> </td>
+            <td><a href="/pages/oder/<%= oder._id %> " class="btn btn-success">Xem chi tiết đơn hàng</a></td>
+          </tr>
+          <% }) %>
+        </tbody>
+		  </table>
+		</div>
+		<div style="background-color: #7fad39; width: 100%; height: 20px;"></div>
+	  </div>
+	</div>
+  </div>

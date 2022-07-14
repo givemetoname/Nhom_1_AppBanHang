@@ -1,0 +1,30 @@
+
+<h4 style="color: red; font-family: 'Roboto Condensed', sans-serif;">
+   <% if(locals.errors){ %> 
+      <% errors.forEach(function(error) { %>
+         <li style="list-style-type: none;"> <%= error.msg %></li>
+     <% }); %> <% } %>
+</h4>
+
+   <h4 style="color: green; font-family: 'Roboto Condensed', sans-serif;">
+      <% if(success_msg != ''){ %>
+         <%= success_msg %>
+        <% } %> 
+   </h4>
+
+   <h4 style="color: red; font-family: 'Roboto Condensed', sans-serif;">
+      <% if(error_msg != ''){ %>
+         <%= error_msg %>
+         
+       <% } %> 
+   </h4>
+
+   <h4 style="color: red; font-family: 'Roboto Condensed', sans-serif;">
+      <% if(error != ''){ %>
+         <%= error %>
+     <% } %>
+   </h4>
+   
+
+   
+    

@@ -1,0 +1,193 @@
+<!--
+    - main container
+  -->
+
+  <main class="container2">
+
+	<h1 class="heading">
+	  <ion-icon name="cart2-outline"></ion-icon> Lịch sử mua hàng
+	</h1>
+  
+	<div class="item-flex">
+  
+	  <!--
+		 - checkout section
+		-->
+  
+  
+	  <!--
+		  - cart2 section
+		-->
+	  <section class="cart2">
+  
+		<div class="cart2-item-box">
+
+		  <% historyPaid.forEach((e,index)=>{ %>
+			<% e.forEach((e,index)=>{ %>  
+				<br>
+				<br>
+			<div class="product-card2">
+			  <div class="card2">
+                    <p> lần mua thứ: <%= index+1 %> của  <%= e.nameFuilt %>  </p>
+				<form action="/cart/deleteProductOfCart" method="post">
+				  <input type="hidden" name="_method" value="DELETE">
+				  <input type="hidden"  name="idProdutsOfCart" value="<%= e._id %>">
+				  <input type="hidden"  name="idProduts" value="<%= e.idProduts %>">
+			  </form>
+				<div class="img-box">
+				  <img src="<%= e.image %> " alt="Cabbage" width="80px" class="product-img">
+				</div>
+  
+				<div class="detail">
+  
+				  <h4 class="product-name">
+					<%= e.nameFuilt %> >
+				  </h4>
+  
+		
+
+				<span>
+					đã mua vào lúc: <%= formatDate(e.createdAt,'MMMM Do YYYY, h:mm:ss a')%>
+				</span>
+  
+					  <span class="quantity">
+					 số lượng đã mua: <%= e.count %>
+					  </span>
+					  
+				  <div class="price">
+					VNĐ <span id="price">
+					  <%= e.price %>
+					</span>
+				  </div>
+				</div>
+				<% }) %>
+				<% }); %>
+  
+			  </div>
+			  
+			</div>
+		</div>
+  
+	  </section>
+  
+	</div>
+  
+  </main>
+  
+  
+  
+  
+  
+  
+  <!--
+	  - custom js link
+	-->
+  <script>
+	'use strict';
+  
+	// all initial elements
+	const payAmountBtn = document.querySelector('#payAmount');
+	const decrementBtn = document.querySelectorAll('.decrement');
+	const quantityElem = document.querySelectorAll('.quantity');
+	const crementBtn = document.querySelectorAll('.increment');
+	const priceElem = document.querySelectorAll('#price');
+	const subtotalElem = document.querySelector('#subtotal');
+	const taxElem = document.querySelector('#tax');
+	const totalElem = document.querySelector('#total');
+  
+  
+	// loop: for add event on multiple `crement` & `decrement` button
+	for (let i = 0; i < crementBtn.length; i++) {
+  
+	  crementBtn[i].addEventListener('click', function () {
+		if (crementBtn[i].textContent.trim() == '+') {
+		  let crement = Number(this.previousElementSibling.textContent);
+		  crement++;
+		  console.log(crement);
+		  this.previousElementSibling.textContent = crement;
+  
+		  crementBtn[i].setAttribute('name', `${crement}`)
+		  totalCalc();
+		} else if (crementBtn[i].textContent.trim() == '-') {
+		  let crement = Number(this.nextElementSibling.textContent);
+  
+		  crement <= 1 ? 1 : crement--;
+		  console.log(crement);
+		  this.nextElementSibling.textContent = crement;
+		  crementBtn[i].setAttribute('name', `${crement}`)
+		  totalCalc();
+		} else {
+  
+		}
+  
+  
+  
+	  });
+  
+	}
+  
+  
+  
+	// function: for calculating total amount of product price
+	const totalCalc = function () {
+  
+	  // declare all initial variable
+	  const tax = 0.05;
+	  let subtotal = 0;
+	  let totalTax = 0;
+	  let total = 0;
+  
+	  // loop: for calculating `subtotal` value from every single product
+  
+	  for (let i = 0; i < quantityElem.length; i++) {
+		subtotal += Number(quantityElem[i].textContent) * Number(priceElem[i].textContent.match(/(\d+)/)[1]);
+  
+	  }
+  
+	  // show the `subtotal` variable value on `subtotalElem` element
+	  subtotalElem.textContent = subtotal.toFixed(3);
+  
+	  // calculating the `totalTax`
+	  totalTax = subtotal * tax;
+  
+	  // show the `totalTax` on `taxElem` element
+	  taxElem.textContent = totalTax.toFixed(3);
+  
+	  // calcualting the `total`
+	  total = subtotal + totalTax;
+  
+	  // show the `total` variable value on `totalElem` & `payAmountBtn` element
+	  totalElem.textContent = total.toFixed(3);
+	  payAmountBtn.textContent = total.toFixed(3);
+  
+	}
+  
+  </script>
+  
+  <script>
+	document.addEventListener('DOMContentLoaded', () => {
+	  $(document).ready(function () {
+		$(".increment").on('click', (e) => {
+		  $.post("increment",
+			{
+			  id: e.target.getAttribute('data-id'),
+			  count: e.target.getAttribute('name').match(/(\d+)/)[1],
+			  editCount: e.target.textContent.trim(),
+			  _method: 'PATCH'
+			},
+			(data, status) => {
+			  console.log('data');
+			})
+		})
+	  })
+	})
+  </script>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"
+	integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <!--
+	  - ionicon link
+	-->
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>

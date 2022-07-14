@@ -1,0 +1,44 @@
+<div class="row justify-content-center">
+	<div class="card" style="width: 77%;">
+	  <div class="card-body pb-0 text-center" style="background-color: #7fad39;">
+		<h4 class="card-title  text-white">Sản phẩm của bạn</h4>
+	  </div>
+	  <div class="card-body p-0">
+		<div class="table-responsive">
+		  <table class="table custom-table text-dark">
+			<thead>
+			  <tr style="background-color: #e4e9f0;">
+				<th>Hình ảnh</th>
+				<th>Tên sản phẩm</th>
+				<th>Số lượng</th>
+				<th>giá thành</th>
+				<th>thể loại sản phẩm</th>
+				<th></th>
+			  </tr>
+			</thead>
+			<tbody>
+				<% products.forEach(product=> { %> 
+			  <tr>
+				<td>
+				  <img style="width: 50px; height: 50px;" src="<%= product.image %>" class="mr-2" alt="image"/>
+				</td>
+					<td>
+						<%= product.nameFuitl%> 
+					</td>
+				 <td>
+					<%= product.count%> 
+				</td>
+				<td><%= product.price%> </td>
+				<td><%= product.type%></td>
+				<td><a href="/pages/myProduct/editProduct/<%= product._id %> " class="btn btn-success">chỉnh sửa</a><form action="/pages/myProduct/deletedProduct/<%= product._id %> " method="post"><input type="hidden" name="_method" value="DELETE"><button type="submit" class="btn btn-danger">Xóa</button></form></td>
+			  </tr>
+			  <% }) %> 
+			</tbody>
+		  </table>
+		</div>
+		<div style="background-color: #7fad39; width: 100%; height: 25%; display: flex; justify-content: flex-start;">
+			<a class="btn btn-secondary text-center"  href="/pages/myProduct/createProduct">Thêm sản phẩm <i class="fa fa-plus-square" aria-hidden="true"></i></a>
+    </div>
+	  </div>
+	</div>
+  </div>

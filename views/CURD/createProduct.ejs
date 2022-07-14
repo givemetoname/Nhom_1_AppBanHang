@@ -1,0 +1,57 @@
+<div class="row justify-content-center">
+	<div class="card" style="width: 77%;">
+	  <div class="card-body pb-0 text-center" style="background-color: #7fad39;">
+		<h4 class="card-title  text-white">Đăng sản phẩm của bạn</h4>
+	  </div>
+	  <div class="card-body p-0">
+		<div class="table-responsive">
+		  <table class="table custom-table text-dark">
+            <form action="/pages/myProduct/addProduct" method="post">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Tên sản phẩm</label>
+                        <input name="nameFuitl" type="text" class="form-control" id="exampleFormControlInput1" placeholder="dưa hấu">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">chi tiết</label>
+                        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">số lượng</label>
+                        <input type="text" name="count" class="form-control" id="exampleFormControlInput1" placeholder="10 kg">
+                      </div>
+                      <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Giá của sản phẩm</label>
+                        <input type="text" name="price" class="form-control" id="exampleFormControlInput1" placeholder="10.000/Kg">
+                      </div>
+                    </div>
+                      <div class="col-xl-6">
+                        <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">Tên người bán</label>
+                            <input type="text" name="sellerName" class="form-control" id="exampleFormControlInput1" placeholder="Tung">
+                          </div>
+                          <div class="mb-3">
+                            <label for="exampleFormControlInput1" class="form-label">hình ảnh</label>
+                            <input type="text" name="image" class="form-control" id="exampleFormControlInput1" placeholder="địa chỉ url của hình ảnh">
+                          </div>
+                          <div class="mb-3 d-flex flex-column">
+                            <label for="">Thể loại sản phẩm</label>
+                            <select name="type" class="form-select w-25" aria-label="Default select example">
+                              <option  selected value="traicay">Trái cây</option>
+                              <option value="rau">Rau</option>
+                              <option value="khac">Khác</option>
+                            </select>
+                          </div>
+                          <div class="mb-3"> 
+                            <button type="submit" class="btn btn-outline-success">Thêm</button>
+                          </div>
+                      </div>
+            </div>
+        </form>
+		  </table>
+		</div>
+		<div style="background-color: #7fad39; width: 100%; height: 20px;"></div>
+	  </div>
+	</div>
+  </div>
